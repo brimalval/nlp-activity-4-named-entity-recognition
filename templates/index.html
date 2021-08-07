@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="vie<link rel=" preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+	<title>Document</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+
+<body>
+	{% if submitted %}
+	<div class="full-width success" id="alert">
+		Successfully submitted a file!
+	</div>
+	{% endif %}
+	<div class="content">
+		<div class="flex col">
+			<div class="flex center col">
+				<div class="action-title">
+					UPLOAD PDF FILE
+				</div>
+				<div class="sources-label">
+					Sources
+				</div>
+			</div>
+			<hr>
+			<div class="flex spc-bet actions">
+				<label for="file" class="card flex center">
+					<div>
+						<form action="/" method="POST" id="pdf-form" enctype="multipart/form-data">
+							<div class="form-control">
+								<div class="action-icon">
+									<img src="https://cdn2.iconfinder.com/data/icons/files-documents-13/128/file_pdf_document_upload-07-512.png"
+										alt="">
+								</div>
+								<div class="action-label">Upload PDF</div>
+								<input type="file" name="file" id="file" class="hidden" accept=".pdf">
+							</div>
+						</form>
+					</div>
+				</label>
+				<a href="/search" class="card flex center">
+					<div>
+						<div class="action-icon">
+							<img src="https://cdn4.iconfinder.com/data/icons/document-31/200/377-512.png" alt="">
+						</div>
+						<div class="action-label">Search PDF</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	document.querySelector('#file').addEventListener('change', function () {
+		document.querySelector('#pdf-form').submit();
+		console.log("loading...");
+	});
+
+	setTimeout(function () {
+		document.querySelector('#alert').remove();
+	}, 7500);
+</script>
+
+</html>
